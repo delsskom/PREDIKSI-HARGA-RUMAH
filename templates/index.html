@@ -1,0 +1,118 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Prediksi Harga Rumah</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <style>
+    html { scroll-behavior: smooth; }
+  </style>
+</head>
+<body class="bg-gray-100 font-sans">
+
+  <!-- Navbar -->
+  <nav class="bg-blue-600 p-4 text-white flex justify-between items-center sticky top-0 shadow">
+    <h1 class="text-xl font-bold">House Price</h1>
+    <div class="space-x-4">
+      <a href="#features" class="hover:underline">Fitur</a>
+      <a href="#preview" class="hover:underline">Preview</a>
+      <a href="#app" class="hover:underline">Mulai</a>
+    </div>
+  </nav>
+
+  <!-- Hero -->
+  <section class="text-center py-24 bg-gradient-to-r from-blue-500 to-indigo-600 text-white">
+    <h2 class="text-4xl font-bold mb-4">Prediksi Harga Rumah</h2>
+    <p class="mb-6">Gunakan machine learning untuk memperkirakan harga rumah</p>
+    <a href="#app" class="bg-white text-blue-600 px-6 py-3 rounded-xl font-semibold hover:scale-105 transition">
+      Mulai Sekarang
+    </a>
+  </section>
+
+  <!-- Features -->
+  <section id="features" class="py-16">
+    <div class="max-w-6xl mx-auto grid md:grid-cols-3 gap-8 text-center">
+      <div class="bg-white p-6 rounded-2xl shadow hover:scale-105 transition">
+        <h3 class="text-xl font-bold mb-2">Cepat</h3>
+        <p class="text-gray-600">Prediksi dalam hitungan detik</p>
+      </div>
+      <div class="bg-white p-6 rounded-2xl shadow hover:scale-105 transition">
+        <h3 class="text-xl font-bold mb-2">Akurat</h3>
+        <p class="text-gray-600">Menggunakan RF, GB, dan XGBoost</p>
+      </div>
+      <div class="bg-white p-6 rounded-2xl shadow hover:scale-105 transition">
+        <h3 class="text-xl font-bold mb-2">Interaktif</h3>
+        <p class="text-gray-600">Dashboard mudah digunakan</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- Preview Section -->
+  <section id="preview" class="py-16 bg-gray-200 text-center">
+    <h2 class="text-2xl font-bold mb-4">Preview Dashboard</h2>
+    <p class="mb-6">Tampilan aplikasi</p>
+
+    <div class="max-w-4xl mx-auto rounded-2xl overflow-hidden shadow-lg">
+      <!-- TERHUBUNG KE GRADIO -->
+      {% if gradio_iframe_url %}
+        <iframe src="{{ gradio_iframe_url }}" width="100%" height="600px" class="border-0"></iframe>
+      {% else %}
+        <p>Gradio sedang memulai, tunggu sebentar...</p>
+      {% endif %}
+    </div>
+  </section>
+
+  <!-- Interactive Demo -->
+  <section class="py-16 text-center">
+    <h2 class="text-2xl font-bold mb-6">Simulasi Input</h2>
+    <div class="max-w-xl mx-auto bg-white p-6 rounded-2xl shadow space-y-4">
+      <input id="area" type="number" placeholder="Luas Rumah" class="w-full p-2 border rounded">
+      <input id="qual" type="number" placeholder="Kualitas Rumah" class="w-full p-2 border rounded">
+
+      <button onclick="fakePredict()" 
+        class="bg-blue-600 text-white px-4 py-2 rounded hover:bg-blue-700 transition">
+        Prediksi Cepat
+      </button>
+
+      <p id="result" class="font-semibold text-lg"></p>
+    </div>
+  </section>
+
+  <!-- App Section -->
+  <section id="app" class="py-16 bg-gray-900 text-white text-center">
+    <h2 class="text-2xl font-bold mb-4">Gunakan Aplikasi Lengkap</h2>
+    <p class="mb-6">Buka dashboard machine learning</p>
+
+    {% if gradio_iframe_url %}
+      <a href="{{ gradio_iframe_url }}" target="_blank"
+         class="bg-green-500 px-6 py-3 rounded-xl font-semibold hover:scale-105 transition">
+        Buka Dashboard
+      </a>
+    {% else %}
+      <p>Gradio sedang memulai...</p>
+    {% endif %}
+  </section>
+
+  <!-- Footer -->
+  <footer class="bg-blue-600 text-white text-center p-4">
+    <p>© 2026 - Dashboard ML by Della Mustifar</p>
+  </footer>
+
+  <script>
+    function fakePredict() {
+      let area = document.getElementById('area').value;
+      let qual = document.getElementById('qual').value;
+
+      if (!area || !qual) {
+        document.getElementById('result').innerText = 'Isi semua input terlebih dahulu';
+        return;
+      }
+
+      let price = (area * 150) + (qual * 10000);
+      document.getElementById('result').innerText = 'Estimasi: $' + price.toLocaleString();
+    }
+  </script>
+
+</body>
+</html>
