@@ -3,13 +3,14 @@
 Aplikasi ini digunakan untuk memprediksi harga rumah menggunakan Machine Learning.
 
 ## Deskripsi
-Program ini menerima beberapa input seperti luas rumah, jumlah kamar, jumlah kamar mandi, dan kualitas bangunan, kemudian menghasilkan prediksi harga rumah.
+Program ini menerima beberapa input seperti luas rumah, kualitas bangunan, jumlah garasi, luas basement, dan jumlah kamar mandi, kemudian menghasilkan prediksi harga rumah.
 
 ## Input
-- GrLivArea (Luas rumah)
-- BedroomAbvGr (Jumlah kamar tidur)
-- FullBath (Jumlah kamar mandi)
-- OverallQual (Kualitas rumah)
+- GrLivArea (>0) : Luas rumah
+- OverallQual (1–10) : Kualitas rumah
+- GarageCars (≥0) : Kapasitas garasi
+- TotalBsmtSF (≥0) : Luas basement
+- FullBath (≥0) : Jumlah kamar mandi
 
 ## Model
 Model yang digunakan adalah XGBoost Regressor.
@@ -25,7 +26,7 @@ python app.py
 http://127.0.0.1:7860
 
 ## Demo
-Aplikasi dijalankan secara lokal menggunakan browser pada alamat:
+Aplikasi dijalankan secara lokal pada:
 http://127.0.0.1:7860
 
 ## Struktur File
