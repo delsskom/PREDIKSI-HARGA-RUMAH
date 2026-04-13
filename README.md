@@ -13,7 +13,7 @@ Program ini menerima beberapa input seperti luas rumah, kualitas bangunan, jumla
 - FullBath (≥0) : Jumlah kamar mandi
 
 ## Model
-Model yang digunakan adalah XGBoost Regressor.
+Model yang digunakan adalah Random Forest, Gradient Boost dan  XGBoost Regressor.
 
 ## Cara Menjalankan
 1. Install library:
@@ -31,5 +31,7 @@ http://127.0.0.1:7860
 
 ## Struktur File
 - app.py
-- model_xgb.pkl
+- gb_model.pkl
+- rf_model.pkl
+- xgb_model.pkl
 - requirements.txt
