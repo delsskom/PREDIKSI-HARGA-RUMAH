@@ -55,10 +55,10 @@ def predict_price(grlivarea, overallqual, garagecars, totalbsmtsf, fullbath):
     avg_pred = (rf_pred + gb_pred + xgb_pred) / 3
 
     return (
-        f"🏠 Random Forest : ${rf_pred:,.0f}\n"
-        f"🌲 Gradient Boost : ${gb_pred:,.0f}\n"
-        f"⚡ XGBoost        : ${xgb_pred:,.0f}\n\n"
-        f"💡 Rata-rata      : ${avg_pred:,.0f}"
+        f"Random Forest : ${rf_pred:,.0f}\n"
+        f"Gradient Boost : ${gb_pred:,.0f}\n"
+        f"XGBoost        : ${xgb_pred:,.0f}\n\n"
+        f"Rata-rata      : ${avg_pred:,.0f}"
     )
 
 # =========================
@@ -105,8 +105,8 @@ with gr.Blocks() as app:
 
     # BUTTON
     with gr.Row():
-        pred_btn = gr.Button("🔍 Prediksi Harga")
-        comp_btn = gr.Button("📊 Bandingkan Model")
+        pred_btn = gr.Button("Prediksi Harga")
+        comp_btn = gr.Button("Bandingkan Model")
 
     # OUTPUT
     output_pred = gr.Textbox(label="Hasil Prediksi")
